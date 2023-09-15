@@ -1,3 +1,10 @@
+/**
+ * Prints out the multiplication or addition table given the users start and end range and type of table
+ *
+ * @author rgill
+ * @version 1.0
+ */
+
 public class ArithmeticTable {
 
 public boolean argumentCheck(String[] args){

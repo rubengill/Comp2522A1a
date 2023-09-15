@@ -59,6 +59,24 @@ public boolean argumentCheck(String[] args){
     end = sto;
     return true;
   }
+
+  /**
+   * Takes in 3 parameters to print out a table
+   *
+   * @param begin start value
+   * @param end end value
+   * @param tableType the type of table to be printed
+   */
+  public void createTable(int begin, int end, TableType tableType) {
+
+  }
+
+  /**
+   * Prints a table based on the arguments set by the user
+   */
+  public void printTable() {
+
+  }
   public static void main(String[] args){
     ArithmeticTable table = new ArithmeticTable();
     if (table.argumentCheck(args)){

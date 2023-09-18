@@ -111,30 +111,28 @@ public class ArithmeticTable {
             case MULT:
                 // Calcuate the size of the array using the start and end values given by the user
                 this.start = begin;
-                this.end = finish;
-                size = end - start + 1;
-                this.values = new float[size][size];
-
-                //Iterate over the 2D array
-                for (int i = 0; i < size; ++i) {
-                    for (int j = 0; j < size; j++) {
-                        // Add the values for each index in the array based on the row and column
-                        this.values[i][j] = (float) ((i + this.start) * (j + this.end));
-                    }
-                }
-                break;
-            case ADD:
-                // Calcuate the size of the array using the start and end values given by the user
-                this.start = begin;
-                this.end = finish;
-                size = end - start + 1;
+                size = finish - start + 1;
                 this.values = new float[size][size];
 
                 //Iterate over the 2D array
                 for (int i = 0; i < size; ++i) {
                     for (int j = 0; j < size; j++) {
                         // Multiply the values for each index in the array based on the row and column
-                        this.values[i][j] = (float) (i + this.start + j + this.end);
+                        this.values[i][j] = (float) ((i + this.start) * (j + this.start));
+                    }
+                }
+                break;
+            case ADD:
+                // Calcuate the size of the array using the start and end values given by the user
+                this.start = begin;
+                size = finish - start + 1;
+                this.values = new float[size][size];
+
+                //Iterate over the 2D array
+                for (int i = 0; i < size; ++i) {
+                    for (int j = 0; j < size; ++j) {
+                        // Add the values for each index in the array based on the row and column
+                        this.values[i][j] = (float) (i + this.start + j + this.start);
                     }
                 }
                 break;

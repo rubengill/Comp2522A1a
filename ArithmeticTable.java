@@ -15,7 +15,29 @@ public class ArithmeticTable {
     }
 
     /**
+     * Instance of Table type.
+     */
+    private TableType tableType;
+
+    /**
+     * Where the table starts
+     */
+    private int start;
+
+    /**
+     * Where the table ends.
+     */
+    private int end;
+
+    /**
+     * Holds the values for the table in a 2D array.
+     */
+    private float[][] values;
+
+
+    /**
      * Checks to make sure the parameters entered are valid
+     *
      * @param args arguments user types in
      * @return true if arguments are valid
      */
@@ -75,10 +97,50 @@ public class ArithmeticTable {
      * Takes in 3 parameters to print out a table
      *
      * @param begin     start value
-     * @param end       end value
+     * @param finish    end value
      * @param tableType the type of table to be printed
      */
-    public void createTable(int begin, int end, TableType tableType) {
+    public void createTable(int begin, int finish, TableType tableType) {
+        int size;
+
+        // Add or multiply the array column/rows based on if it is ADD or MULT
+        switch (tableType) {
+
+            case MULT:
+                // Calcuate the size of the array using the start and end values given by the user
+                this.start = begin;
+                this.end = finish;
+                size = end - start + 1;
+                this.values = new float[size][size];
+
+                //Iterate over the 2D array
+                for (int i = 0; i < size; ++i) {
+                    for (int j = 0; j < size; j++) {
+                        // Add the values for each index in the array based on the row and column
+                        this.values[i][j] = (float) ((i + this.start) * (j + this.end));
+                    }
+                }
+                break;
+            case ADD:
+                // Calcuate the size of the array using the start and end values given by the user
+                this.start = begin;
+                this.end = finish;
+                size = end - start + 1;
+                this.values = new float[size][size];
+
+                //Iterate over the 2D array
+                for (int i = 0; i < size; ++i) {
+                    for (int j = 0; j < size; j++) {
+                        // Multiply the values for each index in the array based on the row and column
+                        this.values[i][j] = (float) ((i + this.start) + (j + this.end));
+                    }
+                }
+                break;
+            // Added default for readability/good coding practice
+            default:
+                System.out.println("Invalid Table Type");
+        }
+
 
     }
 
@@ -86,11 +148,26 @@ public class ArithmeticTable {
      * Prints a table based on the arguments set by the user
      */
     public void printTable() {
-
+        // Iterate over the 2D array
+        for (int i = 0; i < values.length; i++) {
+            for (int j = 0; j < values[i].length; j++) {
+                // Format the printed array according to the specified format
+                System.out.printf("%5.0f", values[i][j]);
+            }
+            System.out.println();
+        }
     }
 
+    /**
+     * Main method for the file
+     *
+     * @param args command line arguments
+     */
     public static void main(String[] args) {
+
+        // Create an object, so we can call the methods defined on it
         ArithmeticTable table = new ArithmeticTable();
+
         if (table.argumentCheck(args)) {
             table.createTable(table.start, table.end, table.tableType);
             table.printTable();

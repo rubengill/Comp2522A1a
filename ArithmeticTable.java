@@ -4,7 +4,6 @@
  * @author rgill
  * @version 1.0
  */
-
 public class ArithmeticTable {
 
     /**
@@ -103,6 +102,7 @@ public class ArithmeticTable {
      * @param tableType the type of table to be printed
      */
     public void createTable(int begin, int finish, TableType tableType) {
+        // Size of the array
         int size;
 
         // Add or multiply the array column/rows based on if it is ADD or MULT
@@ -122,6 +122,7 @@ public class ArithmeticTable {
                     }
                 }
                 break;
+
             case ADD:
                 // Calcuate the size of the array using the start and end values given by the user
                 this.start = begin;
@@ -136,6 +137,7 @@ public class ArithmeticTable {
                     }
                 }
                 break;
+
             // Added default for readability/good coding practice
             default:
                 System.out.println("Invalid Table Type");

@@ -51,10 +51,12 @@ public class ArithmeticTable {
             return false;
         }
 
-        if (args[0].charAt(0) == '+')
+        if (args[0].charAt(0) == '+') {
             tableType = TableType.ADD;
-        else
+        } else
             tableType = TableType.MULT;
+
+
         int sta;
         int sto;
 
@@ -132,7 +134,7 @@ public class ArithmeticTable {
                 for (int i = 0; i < size; ++i) {
                     for (int j = 0; j < size; j++) {
                         // Multiply the values for each index in the array based on the row and column
-                        this.values[i][j] = (float) ((i + this.start) + (j + this.end));
+                        this.values[i][j] = (float) (i + this.start + j + this.end);
                     }
                 }
                 break;
@@ -148,6 +150,7 @@ public class ArithmeticTable {
      * Prints a table based on the arguments set by the user
      */
     public void printTable() {
+
         // Iterate over the 2D array
         for (int i = 0; i < values.length; i++) {
             for (int j = 0; j < values[i].length; j++) {
